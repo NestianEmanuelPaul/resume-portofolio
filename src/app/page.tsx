@@ -6,9 +6,14 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Download, Send, Phone, Mail, MapPin } from "lucide-react"
+import AutoTranslate from "@/components/ui/AutoTranslate";
 
 export default function Home() {
   const [highlight, setHighlight] = useState(true);
+
+  const lang = typeof window !== "undefined"
+    ? new URLSearchParams(window.location.search).get("lang") || "en"
+    : "en";
 
   const handleContactClick = () => {
     // Scroll lin către secțiunea #contact
@@ -39,22 +44,22 @@ export default function Home() {
             </div>
 
             {/* Status Badge */}
-            <div className="relative w-52">
+            <div className="relative w-62">
               <select
                 className="appearance-none w-full bg-zinc-800/50 border border-zinc-700 rounded-full px-10 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-[#40c188] cursor-pointer"
                 defaultValue="available"
               >
                 <option value="available" className="bg-zinc-900 text-white mt-2">
-                  Available for work
+                  <AutoTranslate text="Available for work" lang={lang} />
                 </option>
                 <option value="busy" className="bg-zinc-900 text-white">
-                  Busy
+                  <AutoTranslate text="Busy" lang={lang} />
                 </option>
                 <option value="vacation" className="bg-zinc-900 text-white">
-                  On vacation
+                  <AutoTranslate text="On vacation" lang={lang} />
                 </option>
                 <option value="offline" className="bg-zinc-900 text-white">
-                  Offline
+                  <AutoTranslate text="Offline" lang={lang} />
                 </option>
               </select>
               
@@ -101,7 +106,9 @@ export default function Home() {
                   title="Download your CV"
                 >
                   <Download className="w-4 h-4 group-hover:translate-y-[1px] transition-transform duration-200" />
-                  <span className="font-medium">Download CV</span>
+                  <span className="font-medium">
+                    <AutoTranslate text="Download CV" lang={lang} />
+                  </span>
                 </Button>
               </a>
 
@@ -112,7 +119,9 @@ export default function Home() {
                   title="Get in touch"
                 >
                   <Send className="w-4 h-4 group-hover:translate-x-[1px] transition-transform duration-200" />
-                  <span className="font-medium">Contact Me</span>
+                  <span className="font-medium">
+                    <AutoTranslate text="Contact Me" lang={lang} />
+                  </span>
                 </Button>
               </a>
             </div>
@@ -123,13 +132,15 @@ export default function Home() {
             {/* Say Hello */}
             <div className="space-y-4">
               <h3 className="text-4xl md:text-6xl font-bold leading-tight">
-                I'm Emanuel Nestian,<br />
-                <span className="text-[#40c188]">Programmer</span><br />
-                Based in Iași.
+                <AutoTranslate text="I'm Emanuel Nestian," lang={lang} /><br />
+                <span className="text-[#40c188]">
+                  <AutoTranslate text="Programmer" lang={lang} />
+                </span><br />
+                  <AutoTranslate text="Based in Iași." lang={lang} />
               </h3>
 
               <p className="text-zinc-400 text-lg max-w-4xl leading-relaxed">
-                Developed applications in .NET, C#.
+                <AutoTranslate text="Developed applications in .NET, C#." lang={lang} />
               </p>
             </div>
 
@@ -142,12 +153,13 @@ export default function Home() {
               ].map((stat, index) => (
                 <div key={index} className="text-center space-y-2">
                   <div className="text-4xl md:text-5xl font-bold">{stat.number}</div>
-                  <div className="text-sm text-zinc-400">{stat.label}</div>
+                  <div className="text-sm text-zinc-400">
+                    <AutoTranslate text={stat.label} lang={lang} />
+                  </div>
                 </div>
               ))}
             </div>
             
-
             {/* Experience Section */}
             <section className="space-y-8" id="experience">
               <div className="flex items-center gap-3">
@@ -156,7 +168,9 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold">Experience</h2>
+                <h2 className="text-2xl font-bold">
+                  <AutoTranslate text="Experience" lang={lang} />
+                </h2>
               </div>
 
               <div className="space-y-6">
@@ -168,20 +182,20 @@ export default function Home() {
                     description: (
                       <>
                         <p>
-                          Developed applications in .NET, C#, and Xamarin for Commerce/Retail sector.
+                          <AutoTranslate text="Developed applications in .NET, C#, and Xamarin for Commerce/Retail sector." lang={lang} />
                         </p>
                         <p>
-                          Utilized C#, Microsoft SQL Server, SQL, Visual Studio, .NET, Fork, TeamCity, Azure DevOps.
+                          <AutoTranslate text="Utilized C#, Microsoft SQL Server, SQL, Visual Studio, .NET, Fork, TeamCity, Azure DevOps." lang={lang} />
                         </p>
                         <p>
-                          An explanatory film about the project I worked at IST Gmbh:{" "}
+                          <AutoTranslate text="An explanatory film about the project I worked at IST Gmbh : " lang={lang} />
                           <a
                             href="https://youtu.be/ZVlDrhP_9Uc"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-[#40c188] hover:underline"
                           >
-                            Watch here
+                            <AutoTranslate text="Watch here" lang={lang} />
                           </a>
                         </p>
                       </>
@@ -194,16 +208,16 @@ export default function Home() {
                     description: (
                       <>
                         <p>
-                          Worked on IT Software projects for Commerce/Retail using JavaScript, TypeScript, and C#.
+                          <AutoTranslate text="Worked on IT Software projects for Commerce/Retail using JavaScript, TypeScript, and C#." lang={lang} />
                         </p>
                         <p>
-                          Proficient in C#, JavaScript, Microsoft SQL Server, SQL, and Visual Studio.
+                          <AutoTranslate text="Proficient in C#, JavaScript, Microsoft SQL Server, SQL, and Visual Studio." lang={lang} />
                         </p>
                         <p>
-                          Created applications for automatic translations and complex operations with a fiscal printer using TypeScript and C#.
+                          <AutoTranslate text="Created applications for automatic translations and complex operations with a fiscal printer using TypeScript and C Sharp." lang={lang} />
                         </p>
                         <p>
-                          Worked on various SQL and TypeScript applications, including report generation and customer interfaces.
+                          <AutoTranslate text="Worked on various SQL and TypeScript applications, including report generation and customer interfaces." lang={lang} />
                         </p>
                       </>
                     ),
@@ -215,23 +229,23 @@ export default function Home() {
                     description: (
                       <>
                         <p>
-                          Specialized in Unity 3D and C# for IT Software projects in Commerce/Retail.
+                          <AutoTranslate text="Specialized in Unity 3D and C# for IT Software projects in Commerce/Retail." lang={lang} />
                         </p>
                         <p>
-                          Acquired skills in C#, WPF, Microsoft SQL Server, SQL, ASP .NET MVC, and Unity 3D.
+                          <AutoTranslate text="Acquired skills in C#, WPF, Microsoft SQL Server, SQL, ASP .NET MVC, and Unity 3D." lang={lang} />
                         </p>
                         <p>
-                          Developed a 3D visualization map for a warehouse in Unity 3D and C#.
+                          <AutoTranslate text="Developed a 3D visualization map for a warehouse in Unity 3D and C Sharp." lang={lang} />
                         </p>
                         <p>
-                          An explanatory film about the project I worked at Axes Software:{" "}
+                          <AutoTranslate text="An explanatory film about the project I worked at Axes Software : " lang={lang} />
                           <a
                             href="https://youtu.be/qF0r3k8qAGE"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-[#40c188] hover:underline"
                           >
-                            Watch here
+                            <AutoTranslate text="Watch here" lang={lang} />
                           </a>
                         </p>
                       </>
@@ -242,7 +256,9 @@ export default function Home() {
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="space-y-3 flex-1">
                         <div className="text-xl font-bold">{job.company}</div>
-                        <h3 className="text-zinc-300">{job.title}</h3>
+                        <h3 className="text-zinc-300">
+                          <AutoTranslate text={job.title} lang={lang} />
+                        </h3>
                         <div className="text-zinc-400 text-sm leading-relaxed space-y-2">
                           {job.description}
                         </div>
@@ -264,7 +280,9 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold">Projects</h2>
+                <h2 className="text-2xl font-bold">
+                  <AutoTranslate text="Projects" lang={lang} /> 
+                </h2>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6">
@@ -360,7 +378,9 @@ export default function Home() {
               </div>
 
               <div className="text-center pt-4">
-                <Button variant="secondary" size="lg" className="px-10 w-32">Load More</Button>
+                <Button variant="secondary" size="lg" className="px-10 w-47">
+                  <AutoTranslate text="Load More" lang={lang} />
+                </Button>
               </div>
             </section>
 
@@ -372,7 +392,9 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold">Education</h2>
+                <h2 className="text-2xl font-bold">
+                  <AutoTranslate text="Education" lang={lang} />
+                </h2>
               </div>
 
               <div className="space-y-6">
@@ -384,16 +406,16 @@ export default function Home() {
                     description: (
                       <>
                         <p>
-                          Specialization: Electrical Engineering.
+                          <AutoTranslate text="Specialization: Electrical Engineering." lang={lang} />
                         </p>
                         <p>
-                          In-depth knowledge of electrical circuits, power electronics, automation, and control systems.
+                          <AutoTranslate text="In-depth knowledge of electrical circuits, power electronics, automation, and control systems." lang={lang} />
                         </p>
                         <p>
-                          Practical projects in the laboratory and software applications for the simulation and analysis of electrical systems.
+                          <AutoTranslate text="Practical projects in the laboratory and software applications for the simulation and analysis of electrical systems." lang={lang} />
                         </p>
                         <p>
-                          Development of interdisciplinary work skills (electrical engineering + computer science), useful in complex technology projects.
+                          <AutoTranslate text="Development of interdisciplinary work skills (electrical engineering + computer science), useful in complex technology projects." lang={lang} />
                         </p>
                       </>)
                   },
@@ -404,10 +426,10 @@ export default function Home() {
                     description: (
                       <>
                         <p>
-                          Profile: Mathematics – Computer Science, intensive computer science.
+                          <AutoTranslate text="Profile: Mathematics – Computer Science, intensive computer science." lang={lang} />
                         </p>
                         <p>
-                          Acquisition of a solid foundation in software development and computer systems analysis.
+                          <AutoTranslate text="Acquisition of a solid foundation in software development and computer systems analysis." lang={lang} />
                         </p>
                       </>)
                   }
@@ -415,7 +437,9 @@ export default function Home() {
                   <Card key={index} className="p-6 hover:border-zinc-700 transition-all">
                     <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                       <div className="space-y-3 flex-1">
-                        <h3 className="text-xl font-bold">{edu.title}</h3>
+                        <h3 className="text-xl font-bold">
+                          <AutoTranslate text={edu.title} lang={lang} />
+                        </h3>
                         <div className="text-zinc-400 text-sm">{edu.institution}</div>
                         <div className="text-zinc-400 text-sm leading-relaxed">{edu.description}</div>
                       </div>
@@ -436,7 +460,9 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
                   </svg>
                 </div>
-                <h2 className="text-2xl font-bold">Skills</h2>
+                <h2 className="text-2xl font-bold">
+                  <AutoTranslate text="Skills" lang={lang} />
+                </h2>
               </div>
 
               <div className="grid md:grid-cols-2 gap-4">
@@ -491,10 +517,14 @@ export default function Home() {
                 <div className="w-8 h-8 flex items-center justify-center">
                   <Send className="w-6 h-6" />
                 </div>
-                <h2 className="text-2xl font-bold">Contact</h2>
+                <h2 className="text-2xl font-bold">
+                  <AutoTranslate text="Contact" lang={lang} />
+                </h2>
               </div>
 
-              <h3 className="text-4xl font-bold">Let's Get in Touch!</h3>
+              <h3 className="text-4xl font-bold">
+                <AutoTranslate text="Let's Get in Touch!" lang={lang} />
+              </h3>
 
               <div className="grid md:grid-cols-2 gap-8">
                 {/* Contact Info */}
@@ -505,7 +535,9 @@ export default function Home() {
                         <Phone className="w-6 h-6 text-[#40c188]" />
                       </div>
                       <div>
-                        <div className="text-sm text-zinc-400">Contact No</div>
+                        <div className="text-sm text-zinc-400">
+                          <AutoTranslate text="Contact No" lang={lang} />
+                        </div>
                         <a href="tel:+0240572930" className="font-semibold hover:text-[#40c188] transition-colors">
                           +(04) 764365654
                         </a>
@@ -533,7 +565,9 @@ export default function Home() {
                         <MapPin className="w-6 h-6 text-[#40c188]" />
                       </div>
                       <div>
-                        <div className="text-sm text-zinc-400">Address</div>
+                        <div className="text-sm text-zinc-400">
+                          <AutoTranslate text="Address" lang={lang} />
+                        </div>
                         <a href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-[#40c188] transition-colors">
                           Iasi, Romania
                         </a>
@@ -564,7 +598,9 @@ export default function Home() {
                     title="Send your message"
                   >
                     <Send className="w-4 h-4" />
-                    <span className="font-medium">Send Message</span>
+                    <span className="font-medium">
+                      <AutoTranslate text="Send Message" lang={lang} />
+                    </span>
                   </Button>
                 </form>
 
