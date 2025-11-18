@@ -26,6 +26,8 @@ export default function Home() {
     setTimeout(() => setHighlight(false), 3000);
   };
 
+  const email = "paulnestian" + "@" + "gmail.com";
+
   return (
     <main className="min-h-screen bg-[#090909] text-white scroll-smooth">
       <div className="max-w-6xl mx-auto px-4 py-8 md:py-12 space-y-16">
@@ -552,8 +554,8 @@ export default function Home() {
                       </div>
                       <div>
                         <div className="text-sm text-zinc-400">Email</div>
-                        <a href="mailto:paulnestian@gmail.com" className="font-semibold hover:text-[#40c188] transition-colors">
-                          paulnestian@gmail.com
+                        <a href={`mailto:${email}`} className="font-semibold hover:text-[#40c188] transition-colors">
+                          {email}
                         </a>
                       </div>
                     </div>
